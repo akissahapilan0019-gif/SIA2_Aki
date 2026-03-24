@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('role')->default('user');
             $table->boolean('is_active')->default(true);
+            if (!Schema::hasColumn('users', 'name')) {
+            $table->string('name');
+}
+            $table->integer('quantity');
+            $table->decimal('price', 10, 2);
         });
     }
 
